@@ -18,7 +18,6 @@ module pipeline(
     logic [31:0] PCTargetE, InstrD, PCD, PCPlus4D, ResultW, RS1_E, RS2_E, Imm_Gen_E, PCE, PCPlus4E, PCPlus4M, WriteDataM, ALU_ResultM;
     logic [31:0] PCPlus4W, ALU_ResultW, ReadDataW;
    
-    // Modules Initiation
     // Fetch-Stage
     fetch_cycle fetch (
                         .i_clk_i(i_clk), 
@@ -35,7 +34,7 @@ module pipeline(
                         .i_clk(i_clk), 
                         .i_rst_ni(i_rst_n), 
                         .RegWriteW(RegWriteW), 
-                        .RDW(RDW), 
+                        .RD_ADDR_W(RD_ADDR_W), 
                         .InstrD(InstrD), 
                         .PCD(PCD), 
                         .PCPlus4D(PCPlus4D), 

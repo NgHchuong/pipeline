@@ -2,7 +2,7 @@ module decode_cycle(
 
  // input declaring
     input  logic        i_clk, i_rst_n, RegWriteW,
-    input  logic  [4:0] RDW,
+    input  logic  [4:0] RD_ADDR_W,
     input  logic [31:0] InstrD, PCD, PCPlus4D, ResultW,
  //output declaring
     output logic 			RegWriteE, MemWriteE, br_unE, opa_selE, opb_selE,
@@ -51,7 +51,7 @@ module decode_cycle(
                         .i_rst(i_rst_n),
 				            .i_rs1_addr(InstrD[19:15]),
                         .i_rs2_addr(InstrD[24:20]),
-								.rd_addr(RDW),
+								.rd_addr(RD_ADDR_W),
 	                     .i_rd_data(ResultW),                    
                         .i_rd_wren(RegWriteW),
                         .rs1_data(RS1_D),
