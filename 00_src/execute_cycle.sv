@@ -21,7 +21,7 @@ module execute_cycle(
     logic	     br_equalE, br_lessE;
 
     // Declaring buffers
-    logic 		  RegWriteE_t, MemWriteE_t;
+    logic 		  insn_vld_t, RegWriteE_t, MemWriteE_t;
     logic  [1:0] ResultSrcE_t;
     logic  [4:0] RD_ADDR_E_t;
     logic [31:0] PCPlus4E_t, RS2_E_t, ResultE_t;
@@ -84,6 +84,7 @@ module execute_cycle(
    always_ff@(posedge i_clk or negedge i_rst_n) begin
         if(~i_rst_n) begin
             RegWriteE_t  <= 1'b0; 
+				insn_vld_t   <= 1'b0;
             MemWriteE_t  <= 1'b0; 
             ResultSrcE_t <= 2'b0;
             RD_ADDR_E_t  <= 5'h0;
@@ -93,6 +94,7 @@ module execute_cycle(
         end
         else begin
             RegWriteE_t  <= RegWriteE; 
+				insn_vld_t   <= insn_vldE;
             MemWriteE_t  <= MemWriteE; 
             ResultSrcE_t <= ResultSrcE;
             RD_ADDR_E_t  <= RD_ADDR_E;
@@ -111,6 +113,6 @@ module execute_cycle(
     assign WriteDataM  = RS2_E_t;
     assign ALU_ResultM = ResultE_t;
 	 assign PCTargetE   = (PCSrcE) ? ResultE : 32'b0;
-	 assign insn_vldM   = insn_vldE;
+	 assign insn_vldM   = insn_vld_t;
 
     endmodule : execute_cycle

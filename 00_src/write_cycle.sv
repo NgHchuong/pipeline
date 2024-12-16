@@ -7,6 +7,7 @@ module write_cycle(
 	output logic        insn_vld,
 	output logic [31:0] ResultW
 );
+
 // Declaration of Module
 wb_mux wb_mux (   
    .wb_sel(ResultSrcW),
@@ -15,5 +16,5 @@ wb_mux wb_mux (
    .o_ld_data(ReadDataW),
    .wb_data(ResultW)
   );
-	assign insn_vld = insn_vldW;
+	assign insn_vld = (insn_vldW) ? 1'b1 : 1'b0;
 endmodule : write_cycle

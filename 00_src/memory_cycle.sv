@@ -22,7 +22,7 @@ module memory_cycle (
     logic [31:0] ReadDataM;
 
     // Declaring buffers
-    logic		  RegWriteM_t; 
+    logic		  insn_vld_t, RegWriteM_t; 
     logic  [1:0] ResultSrcM_t;
     logic  [4:0] RD_ADDR_M_t;
     logic [31:0] PCPlus4M_t, ALU_ResultM_t, ReadDataM_t;
@@ -46,6 +46,7 @@ module memory_cycle (
     // Memory Stage Register Logic
     always_ff@(posedge i_clk or negedge i_rst_n) begin
         if (~i_rst_n) begin
+				insn_vld_t     <= 1'b0;
             RegWriteM_t    <= 1'b0; 
             ResultSrcM_t   <= 2'b0;
             RD_ADDR_M_t    <= 5'h0;
@@ -54,6 +55,7 @@ module memory_cycle (
             ReadDataM_t    <= 32'h0;
         end
         else begin
+				insn_vld_t    <= insn_vldM;
             RegWriteM_t   <= RegWriteM; 
             ResultSrcM_t  <= ResultSrcM;
             RD_ADDR_M_t   <= RD_ADDR_M;
@@ -70,6 +72,6 @@ module memory_cycle (
     assign PCPlus4W    = PCPlus4M_t;
     assign ALU_ResultW = ALU_ResultM_t;
     assign ReadDataW   = ReadDataM_t;
-	 assign insn_vldW   = insn_vldM;
+	 assign insn_vldW   = insn_vld_t;
 
 endmodule : memory_cycle
