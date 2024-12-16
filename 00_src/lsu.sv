@@ -182,7 +182,13 @@ end
   assign o_io_lcd  = lcd_data;
   assign o_io_ledg = ledg_data;
   assign o_io_ledr = ledr_data;
-  assign o_io_hex_low = {0, dis_hex3_data, 0, dis_hex2_data, 0, dis_hex1_data, 0, dis_hex0_data};
-  assign o_io_hex_high = {0, dis_hex7_data, 0, dis_hex6_data, 0, dis_hex5_data, 0, dis_hex4_data};
+  assign o_io_hex_low   [7:0] = {0, dis_hex0_data};
+  assign o_io_hex_low  [15:8] = {0, dis_hex1_data};
+  assign o_io_hex_low [23:16] = {0, dis_hex2_data};
+  assign o_io_hex_low [31:24] = {0, dis_hex3_data};
+  assign o_io_hex_high  [7:0] = {0, dis_hex4_data};
+  assign o_io_hex_high [15:8] = {0, dis_hex5_data};
+  assign o_io_hex_high[23:16] = {0, dis_hex6_data};
+  assign o_io_hex_high[31:24] = {0, dis_hex7_data};
 
 endmodule : lsu
