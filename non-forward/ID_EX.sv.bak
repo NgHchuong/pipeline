@@ -1,14 +1,14 @@
 `include "timescale.svh"
 module ID_EX (
-    input logic i_clk, i_rst, StallD, FLushD,
-    input logic [31:0] pc_d, instrD,
+    input logic i_clk, i_rst, StallD, FLushD
+    input logic [31:0] pc_d, instrD
     input logic        insn_vld_d, br_un_d, opb_sel_d, mem_wren_d, rd_wren_d, wb_sel_d, opa_sel_d,       
     input logic [31:0] rs1_data_d,    
     input logic [31:0] rs2_data_d,    
     input logic [31:0] imm_out_d,   
     input logic [3:0] alu_op_d,          
-    output logic        br_un_e, opb_sel_e, mem_wren_e, wb_sel_e, opa_sel_e, rd_wren_e,
-    output logic [31:0] pc_e, instrE,        
+    output logic        br_un_e, opb_sel_e, mem_wren_e, wb_sel_e, opa_sel_e, rd_wren_e
+    output logic [31:0] pc_e, instrE        
     output logic [31:0] rs1_data_e,    // Output rs1 
     output logic [31:0] rs2_data_e,    // Output rs2 
     output logic [31:0] imm_out_e,    // Output immediate data
@@ -59,6 +59,7 @@ module ID_EX (
         end
         else begin
             pc_d         <= pc_e;
+            pc_sel_d     <= pc_sel_e;
             br_un_d      <= br_un_e;
             opa_sel_d    <= opa_sel_e;
             opb_sel_d    <= opb_sel_e;

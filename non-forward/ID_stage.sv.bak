@@ -1,7 +1,7 @@
 `include "timescale.svh"
 module ID_stage (
-    input logic i_clk, i_rst, rd_wren_w,
-    input logic [31:0] instrD, instrW,      // Instruction decoded
+    input logic i_clk, i_rst, rd_wren_w
+    input logic [31:0] instrD, instrW      // Instruction decoded
     input logic [31:0] pc_d,
     input logic [31:0] wb_data_w,  
     output logic [31:0] rs1_data_d,    // Output rs1 
@@ -18,7 +18,7 @@ module ID_stage (
         .rd_wren(rd_wren_d),
         .insn_vld (insn_vld_d),
         .br_un (br_un_d),
-        .opa_sel (opa_sel_d),
+        .opa_sel (opa_sel_d)
         .opb_sel (opb_sel_d),
         .mem_wren (mem_wren_d),
         .wb_sel (wb_sel_d)	

@@ -1,13 +1,13 @@
 module pipeline (
-    input logic i_clk, i_rst	   
+    input logic i_clk, i_rst,	   
 );  
     logic [31:0] instrD, instrE, instrF, instrM, instrW;
     logic [31:0] pc_f, pc_d, pc_e, pc_m, pc_w, alu_data_e, alu_data_m, alu_data_w, ld_data_m, ld_data_w;
     logic [3:0] alu_op_d, alu_op_e;
-    logic [31:0] imm_out_d, imm_out_e, rs1_data_d, rs2_data_d, wb_data_w, rs1_data_e, rs2_data_e, rs2_data_m;
+    logic [31:0] imm_out_d, imm_out_e, rs1_data_d, rs2_data_d, wb_data_w, rs1_data_e, rs2_data_e, rs2_data_m
     logic br_taken, stall_pc, StallF, FlushF, StallD, FLushD, StallE, FlushE, insn_vld, rd_wren_d, rd_wren_m, rd_wren_w, rd_wren_e, br_un_d, br_un_e;
-    logic opa_sel_d, opa_sel_e, opb_sel_d, opb_sel_e, mem_wren_d, mem_wren_m, mem_wren_e, wb_sel_d, wb_sel_e, wb_sel_m, wb_sel_w;
-    IF_stage IF (
+    logic opa_sel_d, opa_sel_e, opb_sel_d, opb_sel_e, mem_wren_d, mem_wren_m, mem_wren_e, wb_sel_d, wb_sel_e, wb_sel_m, wb_sel_w
+    .IF_stage IF (
         .i_clk (i_clk),                     
         .i_rst (i_rst),                   
         .br_taken (br_taken),                
@@ -16,7 +16,7 @@ module pipeline (
         .pc_f (pc_f),
         .stall_pc (stall_pc)
     );
-    IF_ID IF_ID (
+    .IF_ID IF_ID (
         .i_clk (i_clk),
         .i_rst (i_rst),
         .instrF (instrF),
@@ -32,10 +32,10 @@ module pipeline (
         .rd_wren_d (rd_wren_d),
         .insn_vld_d (insn_vld_d),
         .br_un_d (br_un_d),
-        .opa_sel_d (opa_sel_d),
+        .opa_sel_d (opa_sel_d)
         .opb_sel_d (opb_sel_d),
         .mem_wren_d (mem_wren_d),
-        .wb_sel_d (wb_sel_d),
+        .wb_sel_d (wb_sel_d)
         .instrD (instrD),
         .instrW (instrW),
         .pc_d (pc_d),
@@ -69,7 +69,7 @@ module pipeline (
         .opa_sel_e (opa_sel_e), 
         .rd_wren_e (rd_wren_e),
         .pc_e (pc_e), 
-        .instrE (instrE),        
+        .instrE (instrE)        
         .rs1_data_e (rs1_data_e),    
         .rs2_data_e (rs2_data_e), 
         .imm_out_e (imm_out_e),   

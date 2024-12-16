@@ -1,17 +1,17 @@
 `include "timescale.svh"
 module EX_stage (
-    input logic        br_un_e, opb_sel_e, mem_wren_e, wb_sel_e, opa_sel_e, rd_wren_e,
-    input logic [31:0] pc_e, instrE,          
+    input logic        br_un_e, opb_sel_e, mem_wren_e, wb_sel_e, opa_sel_e, rd_wren_e
+    input logic [31:0] pc_e, instrE          
     input logic [31:0] rs1_data_e,    
     input logic [31:0] rs2_data_e,    
     input logic [31:0] imm_out_e,    
     input logic [3:0] alu_op_e,           
-    output logic br_taken,
+    output logic br_taken
     output logic [31:0] alu_data_e
 );
     logic [31:0] i_operand_a;
     logic [31:0] i_operand_b;
-    logic br_equal, br_less;
+    logic br_equal, br_less
 
 
     a_mux a_mux (

@@ -2,7 +2,7 @@
 module IF_stage (
     input logic i_clk,                     // Tín hiệu đồng hồ
     input logic i_rst,                   // Tín hiệu reset
-    input logic br_taken, stall_pc,                 // Chọn PC tiếp theo (để quyết định nhánh hay không)
+    input logic br_taken, stall_pc                 // Chọn PC tiếp theo (để quyết định nhánh hay không)
     input logic [31:0] pc_target,       //pc offset
     output logic [31:0] instrF,         // Lệnh đọc được từ bộ nhớ
     output logic [31:0] pc_f            // Địa chỉ PC hiện tại

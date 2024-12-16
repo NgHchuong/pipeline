@@ -1,7 +1,7 @@
 module hazard_unit (
-    input logic i_clk, rd_wren_w, br_taken,
+    input logic i_clk, rd_wren_w, br_taken
     input logic [31:0] instrW, instrD, instrE, instrM, 
-    output logic stall_pc, StallF, StallD, FlushF, FLushD
+    output logic stall_pc, StallF, StallD, FlushF, FLushD,
 );
     assign instrW[19:15] = rs1_w;
     assign instrM[19:15] = rs1_M;
